@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors'; 
+import contactRoute from "./route/contact.route.js";
 import bookRoute from './route/book.route.js';
 import userRoute from './route/user.route.js';
 
@@ -26,6 +27,7 @@ mongoose.connect(MongoDBURI)
 
 app.use("/book",bookRoute)
 app.use("/user",userRoute)
+app.use("/api", contactRoute);
 
 // Start server
 app.listen(PORT, () => {

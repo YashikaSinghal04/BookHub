@@ -37,86 +37,67 @@ function SignUp() {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-50">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800">Create Account</h2>
-          <button
-            type="button"
-            className="text-gray-500 hover:text-gray-700"
-            onClick={() => navigate("/")}
-          >
-            ✕
-          </button>
-        </div>
-
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Full Name
-            </label>
+    <div className="fixed inset-0 flex items-center justify-center bg-[#ffe4e6] z-50">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 md:p-8 relative mx-2">
+        {/* Close button outside the form */}
+        <button
+          type="button"
+          className="btn btn-sm btn-circle btn-ghost absolute right-3 top-3 text-xl text-gray-400 hover:text-gray-700"
+          onClick={() => navigate("/")}
+        >
+          ✕
+        </button>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <h2 className="font-bold text-2xl text-center text-pink-600 mb-2">Create Account</h2>
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700">Full Name</label>
             <input
               type="text"
               placeholder="Enter your full name"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
               {...register("fullname", { required: true })}
             />
-            {errors.fullname && (
-              <span className="text-sm text-red-500">Name is required</span>
-            )}
+            {errors.fullname && <span className="text-sm text-red-500">Name is required</span>}
           </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Email
-            </label>
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700">Email</label>
             <input
               type="email"
               placeholder="Enter your email"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
               {...register("email", { required: true })}
             />
-            {errors.email && (
-              <span className="text-sm text-red-500">Email is required</span>
-            )}
+            {errors.email && <span className="text-sm text-red-500">Email is required</span>}
           </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Password
-            </label>
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700">Password</label>
             <input
               type="password"
               placeholder="Enter your password"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
               {...register("password", { required: true })}
             />
-            {errors.password && (
-              <span className="text-sm text-red-500">Password is required</span>
-            )}
+            {errors.password && <span className="text-sm text-red-500">Password is required</span>}
           </div>
-
           <button
             type="submit"
             className="w-full bg-pink-500 text-white py-2 px-4 rounded-md hover:bg-pink-600 transition duration-200"
           >
             Sign Up
           </button>
-
           <div className="text-center mt-4">
             <p className="text-gray-600">
               Already have an account?{" "}
               <button
                 type="button"
                 className="text-pink-500 hover:text-pink-600 underline"
-                onClick={() => setShowLogin(true)}
+                onClick={() => navigate("/login")}
               >
                 Login
               </button>
             </p>
           </div>
         </form>
-        {showLogin && <Login open={showLogin} onClose={() => setShowLogin(false)} />}
       </div>
     </div>
   );
