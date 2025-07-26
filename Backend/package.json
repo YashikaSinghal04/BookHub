@@ -17,7 +17,7 @@
 "scripts": {
   "start": "node index.js",
   "dev": "nodemon index.js",
-  "build":"npm run build"
+  "build":"npm install"
 },
   "dependencies": {
     "bcryptjs": "^3.0.2",
